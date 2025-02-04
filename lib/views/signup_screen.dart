@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 
+import 'package:get/get.dart';
+import 'package:locazen/global.dart';
+
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
@@ -239,7 +242,30 @@ class _SignupScreenState extends State<SignupScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 26, right: 40, left: 40),
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (!_formKey.currentState!.validate() ||
+                        imageFileOfUser == null) {
+                      Get.snackbar("Field missing",
+                          "please choose image and fill out complate sing up form");
+                      return;
+                    }
+                    if (!_emailTextEditingController.text.isEmpty &&
+                        _passwordTextEditingController.text.isEmpty) {
+                      Get.snackbar(
+                          "Field missing", "please write email and password");
+                      return;
+                    }
+
+                    userViewModel.signUp(
+                        _emailTextEditingController.text.trim(),
+                        _passwordTextEditingController.text.trim(),
+                        _firstNameTextEditingController.text.trim(),
+                        _lastNameTextEditingController.text.trim(),
+                        _cityTextEditingController.text.trim(),
+                        _countryTextEditingController.text.trim(),
+                        _bioTextEditingController.text.trim(),
+                        imageFileOfUser);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.pink,
                   ),
