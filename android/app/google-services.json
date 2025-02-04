@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "102530164361",
+    "project_id": "locazen-b9b77",
+    "storage_bucket": "locazen-b9b77.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102530164361:android:e58fa30ce1e3bb7568c858",
+        "android_client_info": {
+          "package_name": "com.cakcode.locazen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVbHXUHtT9Lx6Ey2tPX2C3LsIn8oA2gDA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
