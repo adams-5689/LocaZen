@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:locazen/global.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -188,6 +189,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           fontSize: 24,
                         ),
                         controller: _passwordTextEditingController,
+                        obscureText: true,
                         validator: (valuePassword) {
                           if (valuePassword!.length < 6) {
                             return "Please writ password length more 6..";
@@ -226,7 +228,16 @@ class _SignupScreenState extends State<SignupScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 38.0),
               child: MaterialButton(
-                onPressed: () {},
+                onPressed: () async {
+                  var imageFile = await ImagePicker()
+                      .pickImage(source: ImageSource.gallery);
+                  if (imageFile != null) {
+                    imageFileOfUser = File(imageFile.path);
+                    setState(() {
+                      imageFileOfUser;
+                    });
+                  }
+                },
                 child: imageFileOfUser == null
                     ? Icon(Icons.add_a_photo)
                     : CircleAvatar(

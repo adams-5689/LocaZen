@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:locazen/global.dart';
 import 'package:locazen/views/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -71,6 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontSize: 24,
                       ),
                       controller: _passwordTextEditingController,
+                      obscureText: true,
                       validator: (valuePassword) {
                         if (valuePassword!.length < 6) {
                           return "Please writ password length more 6..";
@@ -84,7 +86,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   Padding(
                     padding: const EdgeInsets.only(top: 26),
                     child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            await userViewModel.login(
+                                _emailTextEditingController.text.trim(),
+                                _passwordTextEditingController.text.trim());
+                          }
+                        },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.pink,
                             padding: EdgeInsets.symmetric(horizontal: 100)),
