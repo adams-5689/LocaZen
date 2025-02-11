@@ -6,7 +6,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:locazen/models/app_constants.dart';
-import 'package:locazen/views/account_screen.dart';
+import 'package:locazen/views/guestScreen/account_screen.dart';
+import 'package:locazen/views/guest_home_screen.dart';
 
 class UserViewModel {
   signUp(email, password, firstName, lastName, city, country, bio,
@@ -29,9 +30,8 @@ class UserViewModel {
             .whenComplete(() async {
           await addImageToFirebaseStorage(imageFileOfUser, currentUserID);
         });
-        Get.to(AccountScreen());
+        Get.to(GuestHomeScreen());
         Get.snackbar("Felicitation", " votre compt a ete creer");
-        
       });
     } catch (e) {
       Get.snackbar("Erreur", e.toString());
@@ -77,7 +77,7 @@ class UserViewModel {
         await getUserInfoFromFirestore(currentUserID);
         await getImageFromStorage(currentUserID);
         Get.snackbar("Connectée", "...");
-        Get.to(AccountScreen());
+        Get.to(GuestHomeScreen());
       });
     } catch (e) {
       Get.snackbar("Erreur", e.toString());
