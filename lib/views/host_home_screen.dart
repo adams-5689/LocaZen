@@ -5,29 +5,29 @@ import 'package:locazen/views/guestScreen/explore_screen.dart';
 import 'package:locazen/views/guestScreen/inbox_screen.dart';
 import 'package:locazen/views/guestScreen/saved_listings_screen.dart';
 import 'package:locazen/views/guestScreen/trips_screen.dart';
+import 'package:locazen/views/hostScreens/bookings_screen.dart';
+import 'package:locazen/views/hostScreens/my_postings_screnn.dart';
 
-class GuestHomeScreen extends StatefulWidget {
-  const GuestHomeScreen({super.key});
+class HostHomeScreen extends StatefulWidget {
+  const HostHomeScreen({super.key});
 
   @override
-  State<GuestHomeScreen> createState() => _GuestHomeScreenState();
+  State<HostHomeScreen> createState() => _HostHomeScreenState();
 }
 
-class _GuestHomeScreenState extends State<GuestHomeScreen> {
+class _HostHomeScreenState extends State<HostHomeScreen> {
   ColorsApp colorsApp = ColorsApp();
   int selectedIndex = 0;
   final List<String> screenTitle = [
-    'Explore',
-    'Save',
-    'Trip',
-    'Inbox',
+    'Booking',
+    'My postings'
+        'Inbox',
     'Profile'
   ];
 
   final List<Widget> screens = [
-    ExploreScreen(),
-    SavedListingsScreen(),
-    TripsScreen(),
+    BookingsScreen(),
+    MyPostingsScrenn(),
     InboxScreen(),
     AccountScreen(),
   ];
@@ -74,11 +74,10 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
         currentIndex: selectedIndex,
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
-          customNavigationBarItem(0, Icons.search, screenTitle[0]),
-          customNavigationBarItem(1, Icons.favorite_border, screenTitle[1]),
-          customNavigationBarItem(2, Icons.hotel, screenTitle[2]),
-          customNavigationBarItem(3, Icons.message, screenTitle[3]),
-          customNavigationBarItem(4, Icons.person_outline, screenTitle[4]),
+          customNavigationBarItem(0, Icons.calendar_today, screenTitle[0]),
+          customNavigationBarItem(1, Icons.home, screenTitle[1]),
+          customNavigationBarItem(2, Icons.message, screenTitle[2]),
+          customNavigationBarItem(3, Icons.person_outline, screenTitle[3]),
         ],
       ),
     );

@@ -19,6 +19,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'LocaZen',
         theme: ThemeData(
+          appBarTheme: AppBarTheme(
+              iconTheme: IconThemeData(color: Colors.white),
+              color: Colors.white),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),

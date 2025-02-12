@@ -6,10 +6,14 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:locazen/models/app_constants.dart';
+import 'package:locazen/models/user_model.dart';
 import 'package:locazen/views/guestScreen/account_screen.dart';
 import 'package:locazen/views/guest_home_screen.dart';
 
 class UserViewModel {
+  UserModel userModel = UserModel();
+
+  //signUp process
   signUp(email, password, firstName, lastName, city, country, bio,
       imageFileOfUser) async {
     Get.snackbar("Veuillez Patienté", " votre compt a ete creer");
@@ -66,6 +70,7 @@ class UserViewModel {
         MemoryImage(imageFileOfUser.readAsBytesSync());
   }
 
+  //login logic
   login(email, password) async {
     Get.snackbar("Connexion", "...");
     try {
@@ -110,5 +115,20 @@ class UserViewModel {
 
     AppConstants.currentUser.displayImage = MemoryImage(imageDataInInBytes!);
     return AppConstants.currentUser.displayImage;
+  }
+
+  becomeHost(String userID) async {
+    userModel.isHost = true;
+    Map<String, dynamic> dataMap = {
+      "isHost": true,
+    };
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(userID)
+        .update(dataMap);
+  }
+
+  modifyCurrentHostinge(bool isHosting) {
+    userModel.iscurrentlyHosting = isHosting;
   }
 }

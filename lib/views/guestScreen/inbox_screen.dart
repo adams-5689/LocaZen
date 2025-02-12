@@ -11,9 +11,9 @@ class _InboxScreenState extends State<InboxScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Inbox Page"),
-      ),
-    );
+        // appBar: AppBar(
+        //   title: Text("Inbox Page"),
+        // ),
+        );
   }
 }
